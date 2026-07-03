@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pay R H A M & Associates</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #1a2a6c, #2c3e50);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 36px 28px;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  }
+  .icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px;
+    background: #eef2ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+  }
+  h1 {
+    font-size: 20px;
+    color: #1a2a6c;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  .upi-id {
+    background: #f5f6fa;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #444;
+    margin-bottom: 24px;
+    word-break: break-all;
+  }
+  .pay-btn {
+    display: block;
+    background: #1a2a6c;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    transition: opacity 0.2s;
+  }
+  .pay-btn:active { opacity: 0.8; }
+  .status {
+    font-size: 13px;
+    color: #999;
+    margin-top: 16px;
+  }
+  .apps {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #aaa;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">💳</div>
+    <h1>R H A M & ASSOCIATES</h1>
+    <p class="subtitle">Redirecting you to your UPI app…</p>
+    <div class="upi-id">vyapar.173809273301@hdfcbank</div>
+
+    <a class="pay-btn" id="payBtn" href="upi://pay?pa=vyapar.173809273301@hdfcbank&pn=R%20H%20A%20M%20%26%20ASSOCIATES&cu=INR&tn=Payment">
+      Tap to Pay Now
+    </a>
+
+    <p class="status" id="statusMsg">Opening your UPI app automatically…</p>
+    <div class="apps">Works with GPay · PhonePe · Paytm · BHIM</div>
+  </div>
+
+  <script>
+    var upiLink = "upi://pay?pa=vyapar.173809273301@hdfcbank&pn=R%20H%20A%20M%20%26%20ASSOCIATES&cu=INR&tn=Payment";
+
+    // Attempt auto-redirect
+    window.location.href = upiLink;
+
+    // If nothing happens within ~1.5s, show the manual button clearly
+    setTimeout(function () {
+      var status = document.getElementById('statusMsg');
+      status.textContent = "If your UPI app didn't open, tap the button above.";
+    }, 1500);
+  </script>
+</body>
+</html>
